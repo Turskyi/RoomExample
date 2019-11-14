@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GSON</string>
+    <string name="saveandsend">SaveAndSend</string>
+    <string name="name">name</string>
+    <string name="age">age</string>
+    <string name="language">language</string>
+    <string name="show_saved_data">Show saved data</string>
+</resources>
