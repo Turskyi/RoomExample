@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        dataBase = AppDataBase.getInstance(this)
         appThread = DBAppThread(threadName = "MainActivity")
         appThread.start()
+        dataBase = AppDataBase.getInstance(this)
 
         btnSendToSecondActivity.setOnClickListener {
             saveProfile()
