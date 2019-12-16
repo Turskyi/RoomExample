@@ -12,7 +12,6 @@ import ua.turskyi.roomexample.room.model.Profile
 
 class SecondActivity : AppCompatActivity(R.layout.activity_second) {
 
-
     private lateinit var dataBase: AppDataBase
     //    private lateinit var appThread: DBAppThread
     private lateinit var appThread: Handler
@@ -20,7 +19,6 @@ class SecondActivity : AppCompatActivity(R.layout.activity_second) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
 //        appThread = DBAppThread(threadName = "SecondActivity")
 //        appThread.start()

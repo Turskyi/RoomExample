@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GSON</string>
+    <string name="app_name">RoomExample</string>
     <string name="saveandsend">SaveAndSend</string>
     <string name="name">name</string>
     <string name="age">age</string>

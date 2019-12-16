@@ -7,8 +7,7 @@ import ua.turskyi.roomexample.room.model.Profile.Companion.TABLE_NAME
 
 @Entity(tableName = TABLE_NAME)
 data class Profile(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = COLUMN_ID) var id: Int,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = COLUMN_ID) var id: Int,
     @ColumnInfo(name = COLUMN_NAME) var name: String?,
     @ColumnInfo(name = COLUMN_AGE) var age: String?,
     @ColumnInfo(name = COLUMN_LANGUAGE) var language: String?

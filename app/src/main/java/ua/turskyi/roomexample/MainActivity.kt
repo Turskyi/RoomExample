@@ -10,7 +10,7 @@ import ua.turskyi.roomexample.room.model.Profile
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private lateinit var dataBase: AppDataBase
+    private lateinit var database: AppDataBase
     private lateinit var appThread: DBAppThread
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         appThread = DBAppThread(threadName = "MainActivity")
         appThread.start()
-        dataBase = AppDataBase.getInstance(this)
+        database = AppDataBase.getInstance(this)
 
         btnSendToSecondActivity.setOnClickListener {
             saveProfile()
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private fun saveProfile() {
         val profile = Profile("${editTextName.text}", "${editTextAge.text}")
         appThread.postTask(Runnable {
-            dataBase.profileDAO().insertData(profile)
+            database.profileDAO().insertData(profile)
         })
     }
 
