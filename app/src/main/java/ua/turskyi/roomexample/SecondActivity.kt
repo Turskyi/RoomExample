@@ -13,26 +13,16 @@ import ua.turskyi.roomexample.room.model.Profile
 class SecondActivity : AppCompatActivity(R.layout.activity_second) {
 
     private lateinit var dataBase: AppDataBase
-    //    private lateinit var appThread: DBAppThread
-    private lateinit var appThread: Handler
+    private lateinit var appHandler: Handler
     private lateinit var profile: Profile
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        appThread = DBAppThread(threadName = "SecondActivity")
-//        appThread.start()
-//        appThread.postTask(Runnable {
-//            val result = dataBase.profileDAO().getAll()
-//            if(result.isNotEmpty()){
-//                profile = result[0]
-//            }
-//        })
-
         val handlerThread = HandlerThread("SecondActivity")
         handlerThread.start()
         val looper: Looper = handlerThread.looper
-        appThread = Handler(looper)
+        appHandler = Handler(looper)
 
         dataBase = AppDataBase.getInstance(this)
 
@@ -48,20 +38,13 @@ class SecondActivity : AppCompatActivity(R.layout.activity_second) {
                 sendToThirdActivity()
             }
         }
-        appThread.post(task)
+        appHandler.post(task)
     }
-
-//    private fun saveProfile() {
-//        profile.language = editTextLanguage.text.toString()
-//        appThread.postTask(Runnable {
-//            dataBase.profileDAO().insertData(profile)
-//        })
-//    }
 
     private fun saveProfile() {
         profile.language = editTextLanguage.text.toString()
-        appThread.post {
-            dataBase.profileDAO().insertData(profile)
+        appHandler.post {
+            dataBase.profileDAO().insert(profile)
         }
     }
 
@@ -69,5 +52,4 @@ class SecondActivity : AppCompatActivity(R.layout.activity_second) {
         val intent = Intent(this, ThirdActivity::class.java)
         this.startActivity(intent)
     }
-
 }

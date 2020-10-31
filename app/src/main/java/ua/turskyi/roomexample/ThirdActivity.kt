@@ -12,24 +12,12 @@ import ua.turskyi.roomexample.room.model.Profile
 class ThirdActivity : AppCompatActivity(R.layout.activity_third) {
 
     private lateinit var dataBase: AppDataBase
-    //    private lateinit var appThread: DBAppThread
     private lateinit var appThread: Handler
     private lateinit var profile: Profile
-    private val uiHandler = Handler()
+    private val uiHandler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-//        appThread = DBAppThread(threadName = "ThirdActivity")
-//        appThread.start()
-//        appThread.postTask(Runnable {
-//            val result = dataBase.profileDAO().getAll()
-//            if (result.isNotEmpty()) {
-//                profile = result[0]
-//                showInfo()
-//            }
-//        })
 
         val handlerThread = HandlerThread("ThirdActivity")
         handlerThread.start()

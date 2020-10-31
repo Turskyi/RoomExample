@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun saveProfile() {
         val profile = Profile("${editTextName.text}", "${editTextAge.text}")
-        appThread.postTask(Runnable {
-            database.profileDAO().insertData(profile)
-        })
+        appThread.postTask {
+            database.profileDAO().insert(profile)
+        }
     }
 
 

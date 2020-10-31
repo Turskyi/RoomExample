@@ -10,7 +10,7 @@ interface ProfileDAO {
     fun update(profile: Profile)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertData(profile: Profile)
+    fun insert(profile: Profile)
 
     @Query("SELECT * FROM ${Profile.TABLE_NAME} LIMIT 1")
     fun getAll(): List<Profile>
