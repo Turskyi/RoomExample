@@ -4,13 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import ua.turskyi.roomexample.room.AppDataBase
+import ua.turskyi.roomexample.room.AppDatabase
 import ua.turskyi.roomexample.room.DBAppThread
 import ua.turskyi.roomexample.room.model.Profile
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private lateinit var database: AppDataBase
+    private lateinit var database: AppDatabase
     private lateinit var appThread: DBAppThread
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         appThread = DBAppThread(threadName = "MainActivity")
         appThread.start()
-        database = AppDataBase.getInstance(this)
+        database = AppDatabase.getInstance(this)
 
         btnSendToSecondActivity.setOnClickListener {
             saveProfile()

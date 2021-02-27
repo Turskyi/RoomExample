@@ -6,12 +6,12 @@ import android.os.HandlerThread
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_third.*
-import ua.turskyi.roomexample.room.AppDataBase
+import ua.turskyi.roomexample.room.AppDatabase
 import ua.turskyi.roomexample.room.model.Profile
 
 class ThirdActivity : AppCompatActivity(R.layout.activity_third) {
 
-    private lateinit var dataBase: AppDataBase
+    private lateinit var database: AppDatabase
     private lateinit var appThread: Handler
     private lateinit var profile: Profile
     private val uiHandler = Handler(Looper.getMainLooper())
@@ -24,10 +24,10 @@ class ThirdActivity : AppCompatActivity(R.layout.activity_third) {
         val looper: Looper = handlerThread.looper
         appThread = Handler(looper)
 
-        dataBase = AppDataBase.getInstance(this)
+        database = AppDatabase.getInstance(this)
 
         val task = Runnable {
-            val result = dataBase.profileDAO().getAll()
+            val result = database.profileDAO().getAll()
             if (result.isNotEmpty()) {
                 profile = result[0]
                 showInfo()
