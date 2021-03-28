@@ -27,16 +27,16 @@ class SecondActivity : AppCompatActivity(R.layout.activity_second) {
         database = AppDatabase.getInstance(this)
 
         getLocalData()
+        btnSendToThirdActivity.setOnClickListener {
+            saveProfile()
+            sendToThirdActivity()
+        }
     }
 
     private fun getLocalData() {
         val task = Runnable {
             val result = database.profileDAO().getAll()
             profile = result[0]
-            btnSendToThirdActivity.setOnClickListener {
-                saveProfile()
-                sendToThirdActivity()
-            }
         }
         appHandler.post(task)
     }
